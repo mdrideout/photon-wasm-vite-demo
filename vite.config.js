@@ -4,4 +4,14 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [topLevelAwait(), wasm()],
+  build: {
+    minify: false,
+    rollupOptions: {
+      preserveEntrySignatures: true,
+      output: {
+        entryFileNames: "[name].js",
+        assetFileNames: "[name].[ext]",
+      },
+    },
+  },
 });
